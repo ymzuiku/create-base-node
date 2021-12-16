@@ -1,7 +1,7 @@
 export function App() {
   const out = document.createElement("div");
   const ele = document.createElement("div");
-  ele.textContent = "dog";
+  ele.textContent = "Click me fetch /ping";
   out.append(ele);
 
   const img = document.createElement("img");
