@@ -7,7 +7,7 @@
     "creator.js"
   ],
   "bin": {
-    "create-react-ssx": "creator.js"
+    "create-base-node": "creator.js"
   },
   "repository": {
     "type": "git",

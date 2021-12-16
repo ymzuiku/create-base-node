@@ -21,12 +21,12 @@ function copyFolderSync(from, to) {
 
 if (!dir) {
   console.log("Please input project name, like this:");
-  console.log("npx create-react-ssx my-project");
+  console.log("npx create-base-node my-project");
   process.exit(1);
 }
 
 if (dir === "--update") {
-  dir = "updateby-create-react-ssx";
+  dir = "updateby-create-base-node";
 }
 
 if (fs.existsSync(Cwd(dir))) {
@@ -37,7 +37,7 @@ if (fs.existsSync(Cwd(dir))) {
 
 console.log("Target Project:", Cwd(dir));
 console.log("Creating...");
-const worker = spawn("git", ["clone", "--depth=1", "https://github.com/ymzuiku/create-react-ssx", dir], {
+const worker = spawn("git", ["clone", "--depth=1", "https://github.com/ymzuiku/create-base-node", dir], {
   // stdio: "inherit",
   env: process.env,
 });
@@ -49,7 +49,7 @@ worker.addListener("close", (code) => {
     // fs.rmSync(Cwd(dir, "pnpm-lock.yaml"), { recursive: true, force: true });
     fs.rmSync(Cwd(dir, "ssx-logo.svg"), { recursive: true, force: true });
 
-    if (dir === "updateby-create-react-ssx") {
+    if (dir === "updateby-create-base-node") {
       let oldPkg = require(Cwd("package.json"));
       const newPkg = require(Cwd(dir, "package.json"));
       oldPkg.dependencies = {
