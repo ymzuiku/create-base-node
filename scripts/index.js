@@ -9,7 +9,7 @@ const child_process = require("child_process");
 const Cwd = (...args) => path.resolve(process.cwd(), ...args);
 const isProd = process.env.NODE_ENV === "production";
 
-const isBuildStatic = process.env.BUILD === "static" || process.env.BUILD === "all";
+const isBuildClient = process.env.BUILD === "client" || process.env.BUILD === "all";
 const isBuildServer = process.env.BUILD === "server" || process.env.BUILD === "all";
 const define = {
   "process.env.NODE_ENV": `"${process.env.NODE_ENV}"`,
@@ -110,7 +110,7 @@ async function build() {
   }
 
   if (isProd) {
-    if (isBuildStatic) {
+    if (isBuildClient) {
       await Vite.build(configs.static(define));
     }
 

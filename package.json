@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "cross-env SERVER_DIR=api BUILD=all node scripts",
     "build:server": "cross-env SERVER_DIR=api NODE_ENV=production BUILD=server node scripts",
-    "build:static": "cross-env NODE_ENV=production BUILD=static node scripts",
+    "build:client": "cross-env NODE_ENV=production BUILD=client node scripts",
     "test": "jest --watch",
     "prepare": "husky install"
   },
