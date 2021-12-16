@@ -1,0 +1,19 @@
+{
+  "name": "create-base-node",
+  "version": "0.1.0",
+  "description": "",
+  "main": "creator.js",
+  "files": [
+    "creator.js"
+  ],
+  "bin": {
+    "create-react-ssx": "creator.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ymzuiku/create-base-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
