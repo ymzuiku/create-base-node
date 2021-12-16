@@ -1,6 +1,4 @@
 const Vite = require("vite");
-const reactJsx = require("vite-react-jsx").default;
-const reactRefresh = require("@vitejs/plugin-react-refresh").default;
 const viteImagemin = require("vite-plugin-imagemin");
 const isProd = process.env.NODE_ENV === "production";
 const mode = isProd ? "production" : "development";
@@ -59,7 +57,6 @@ exports.tmp = (entry) =>
     root: cwd,
     mode,
     configFile: false,
-    plugins: [reactRefresh(), reactJsx()],
     logLevel: "error",
     build: {
       ssr: true,
@@ -84,7 +81,6 @@ exports.entryServer = (define) =>
     define,
     logLevel: "error",
     configFile: false,
-    plugins: [reactRefresh(), reactJsx()],
     build: {
       ssr: true,
       sourcemap: false,
@@ -105,8 +101,6 @@ exports.static = () =>
   Vite.defineConfig({
     root: cwd,
     plugins: [
-      reactRefresh(),
-      reactJsx(),
       viteImagemin({
         filter: /(\.png|\.jpg|\.jpge|\.gif)/,
         gifsicle: {

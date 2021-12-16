@@ -16,14 +16,12 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": false,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "noEmit": true
   },
   "compileOnSave": false,
   "include": [
-    "pages",
-    "scripts",
-    "cmd",
-    "jest.config.js"
+    "api",
+    "app",
+    "scripts"
   ]
 }

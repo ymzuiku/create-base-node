@@ -104,7 +104,7 @@ module.exports = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  setupFiles: ["./scripts/build/jestSetup.ts"],
+  setupFiles: ["./scripts/jestSetup.ts"],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   setupFilesAfterEnv: [],
@@ -133,10 +133,7 @@ module.exports = {
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: [
     "/node_modules/",
-    "/cmd/",
-    "/internal/",
     "/dist/",
-    "/dist_serve/",
     "/coverage/",
     "/.vscode/",
     "/logs/",

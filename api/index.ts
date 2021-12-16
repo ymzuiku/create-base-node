@@ -1,6 +1,6 @@
 import { fastify } from "fastify";
-import { useSSR } from "./build/useSSR";
-import { getIPAddress } from "./build/getIPAddress";
+import { useClient } from "../scripts/useClient";
+import { getIPAddress } from "../scripts/getIPAddress";
 import { config } from "dotenv";
 
 config();
@@ -12,7 +12,7 @@ app.get("/ping", async (res) => {
 });
 
 async function start() {
-  await useSSR(app);
+  await useClient(app);
   try {
     console.log(`http://localhost:${PORT} or http://${getIPAddress()}:${PORT}`);
     // 若你工作的网络环境不安全，请移除 public address
