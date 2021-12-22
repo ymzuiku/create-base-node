@@ -10,7 +10,8 @@ export const proxyFetch = (url: string, init?: any) => {
   if (/^\/v1/.test(url)) {
     url = baseURL + url;
   } else {
-    const text = String(fs.readFileSync(path.resolve(__dirname, "static") + url));
+    // 模拟请求本地文件
+    const text = String(fs.readFileSync(path.resolve(__dirname, "public") + url));
     return new Promise((res) => {
       res({
         text: () => new Promise((res) => res(text)),
