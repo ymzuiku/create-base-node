@@ -4,6 +4,16 @@ const isProd = process.env.NODE_ENV === "production";
 const mode = isProd ? "production" : "development";
 const cwd = process.cwd();
 const serverIndex = process.env.SERVER_DIR + "/index.ts";
+const fs = require("fs-extra");
+const { resolve } = require("path");
+
+const htmls = {};
+
+fs.readdirSync(cwd).forEach((f) => {
+  if (/\.html/.test(f)) {
+    htmls[f.split(".")[0]] = resolve(cwd, f);
+  }
+});
 
 exports.serverDev = (define) =>
   Vite.defineConfig({
@@ -97,9 +107,10 @@ exports.entryServer = (define) =>
     },
   });
 
-exports.static = () =>
+exports.static = (define) =>
   Vite.defineConfig({
     root: cwd,
+    define,
     plugins: [
       viteImagemin({
         filter: /(\.png|\.jpg|\.jpge|\.gif)/,
@@ -125,5 +136,11 @@ exports.static = () =>
     build: {
       brotliSize: false,
       outDir: "dist/static",
+      sourcemap: false,
+      minify: true,
+      emptyOutDir: true,
+      rollupOptions: {
+        input: htmls,
+      },
     },
   });

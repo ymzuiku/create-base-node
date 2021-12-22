@@ -14,6 +14,7 @@ const isBuildServer = process.env.BUILD === "server" || process.env.BUILD === "a
 const define = {
   "process.env.NODE_ENV": `"${process.env.NODE_ENV}"`,
   "process.env.BUILD": `"${process.env.BUILD}"`,
+  "process.env.DEV": `"${!isProd}"`,
 };
 
 function getBuildReleaseDir() {

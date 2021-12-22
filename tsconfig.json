@@ -20,8 +20,8 @@
   },
   "compileOnSave": false,
   "include": [
-    "api",
-    "app",
+    "src-server",
+    "src-client",
     "scripts"
   ]
 }

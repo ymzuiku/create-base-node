@@ -6,7 +6,7 @@ const isProd = process.env.NODE_ENV === "production";
 // 此配置仅应用于前端编译
 // https://vitejs.dev/config/
 export default defineConfig({
-  publicDir: "static",
+  publicDir: "public",
   plugins: [
     isProd &&
       legacy({
