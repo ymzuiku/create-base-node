@@ -1,17 +1,27 @@
-import fetch, { RequestInit } from "node-fetch";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import fs from "fs";
+import fetch from "isomorphic-unfetch";
+import path from "path/posix";
 
-export const proxyFetch = (url: string, opt: RequestInit) => {
-  if (url[0] === "/") {
-    if (process.env.PROXY_FETCH) {
-      url = process.env.PROXY_FETCH + url;
-    } else {
-      url = "http://127.0.0.1:" + (process.env.PORT || 3000) + url;
-    }
+const baseURL = "http://127.0.0.1:8801";
+
+// 用于代理 jest 环境的请求
+export const proxyFetch = (url: string, init?: any) => {
+  if (/^\/v1/.test(url)) {
+    url = baseURL + url;
+  } else {
+    const text = String(fs.readFileSync(path.resolve(__dirname, "static") + url));
+    return new Promise((res) => {
+      res({
+        text: () => new Promise((res) => res(text)),
+        json: () => new Promise((res) => res(JSON.parse(text))),
+      });
+    });
   }
-  return fetch(url, opt);
+
+  return fetch(url, init);
 };
 
 if (global) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (global as any).fetch = proxyFetch;
 }
