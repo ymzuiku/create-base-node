@@ -54,11 +54,11 @@
     "useTabs": false
   },
   "lint-staged": {
-    "api/**/*": "prettier --write --ignore-unknown",
-    "app/**/*": "prettier --write --ignore-unknown",
+    "src-server/**/*": "prettier --write --ignore-unknown",
+    "src-client/**/*": "prettier --write --ignore-unknown",
     "scripts/**/*": "prettier --write --ignore-unknown",
-    "api/**/*.{tsx,ts}": "eslint --cache --fix",
-    "app/**/*.{tsx,ts}": "eslint --cache --fix",
+    "src-server/**/*.{tsx,ts}": "eslint --cache --fix",
+    "src-clinet/**/*.{tsx,ts}": "eslint --cache --fix",
     "scripts/**/*.{tsx,ts}": "eslint --cache --fix"
   }
 }
